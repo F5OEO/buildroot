@@ -1,0 +1,9 @@
+#source pluto_cc.sh
+menu "Applications and Tools for PlutoSDR"
+	source "./f5oeo/package/lamableu-apps/Config.in"
+	source "./f5oeo/package/libdvbmod/Config.in"
+	source "./f5oeo/package/dvb2iq/Config.in"
+    source "./f5oeo/package/libtuntap/Config.in"
+    source "./f5oeo/package/pluto_dvb/Config.in"
+    
+endmenu

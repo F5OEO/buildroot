@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PLUTO_DVB
+	bool "pluto_dvb"
+    select BR2_PACKAGE_LIBDVBMOD
+	help
+	  Transport stream to DVBS/S2 modulator
+
+	  https://github.com/F5OEO/pluto_dvb
