@@ -218,6 +218,42 @@ do
 	then
 		handle_boot_frm "${bootimage}"
 	fi
+    
+    if [[ -s /mnt/files.tar.gz ]]
+	then
+		flash_indication_on
+		cp /mnt/files.tar.gz /tmp
+		gzip -d /tmp/files.tar.gz
+		tar -x -C / -f /tmp/files.tar
+		touch /mnt/ADDED_FILES_OK.txt
+		tar -t -f /tmp/files.tar | sort > /mnt/ADDED_FILES_OK.txt
+		rm /mnt/files.tar.gz
+		rm /tmp/files.tar
+		flash_indication_off
+	fi
+
+
+	for i in /mnt/runme??* ;do
+ 	       # Ignore dangling symlinks (if any).
+	        [ ! -f "$i" ] && continue
+		flash_indication_on
+ 	       case "$i" in
+	                *.sh)
+    	            # Source shell script for speed.
+   	             (
+       	                 trap - INT QUIT TSTP
+      	                 set start
+         	         . $i
+                	)
+                ;;
+                *)
+                	# No sh extension, so fork subprocess.
+                	$i start
+                ;;
+		esac
+		flash_indication_off
+		touch /mnt/RUNME_OK
+        done
 
 	md5sum -c /opt/config.md5 || process_ini $conf
 
