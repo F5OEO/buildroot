@@ -6,7 +6,7 @@ mkfifo /root/tspipe
 
 while :
 do
-killall ffmpeg
+#killall ffmpeg
 rm infortmp
 FREQ=""
 VIDEORATE=""
