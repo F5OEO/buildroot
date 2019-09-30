@@ -2,7 +2,7 @@
 start() {
    /root/autoudp.sh >/dev/null </dev/null 2>/dev/null &
    /root/rtmppluto.sh >/dev/null </dev/null 2>/dev/null &
-   /root/apollo.sh >/dev/null </dev/null 2>/dev/null &
+   
 }
 
 stop() {

@@ -49,8 +49,18 @@ else
 MESSAGE="V$VIDEORATE kb"
 fi
 
-
-ffmpeg -analyzeduration 4000000 -f mpegts -i /root/bigtspipe -ss 4 -codec copy -muxrate $TSBITRATE -f mpegts -metadata service_provider="$MESSAGE" -metadata service_name=$CALL -streamid 0:256 -y /root/tspipe | /root/pluto_dvb -i /root/tspipe -m $MODE -c $CONSTEL -s $SR"000" -f $FEC -t $FREQ"e6" 
+if [ "$MODE" = "ANA" ]; then
+        echo Analogique
+echo 0 > /sys/bus/iio/devices/iio:device1/out_voltage_filter_fir_en
+echo 2250000 > /sys/bus/iio/devices/iio:device1/out_voltage_sampling_frequency
+echo $FREQ"000000" > /sys/bus/iio/devices/iio:device1/out_altvoltage1_TX_LO_frequency
+ffmpeg -analyzeduration 4000000 -f mpegts -i /root/bigtspipe -ss 4 -codec copy -f mpegts -y /root/tspipe \
+| /root/hacktv -m apollo-fsc-fm -o - -t int16 -s 2250000 ffmpeg:/root/tspipe | iio_writedev -b 100000 cf-ad9361-dds-core-lpc
+else
+        echo DVB
+ffmpeg -analyzeduration 4000000 -f mpegts -i /root/bigtspipe -ss 4 -codec copy -muxrate $TSBITRATE -f mpegts -metadata service_provider="$MESSAGE" -metadata service_name=$CALL -streamid 0:256 -y /root/tspipe \
+| /root/pluto_dvb -i /root/tspipe -m $MODE -c $CONSTEL -s $SR"000" -f $FEC -t $FREQ"e6"
+fi
 echo endstreaming
 done
-done
+
