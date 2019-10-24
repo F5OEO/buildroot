@@ -85,7 +85,7 @@
 <section id="phone">
 <a class="anchor" href="#top">Back to top</a>
 <h3>Phone</h3>
-<p>On Android you can install <a href="https://play.google.com/store/apps/details?id=com.wmspanel.larix_broadcaster&hl=fr">Laryx Broadcaster</a> </p>
+<p>On Android you can install <a href="https://play.google.com/store/apps/details?id=com.wmspanel.larix_broadcaster&hl=fr">Larix Broadcaster</a> </p>
 <p id="test"><strong>Add a connection</strong></p>
 <p>Assume that phone and pluto are on a same network (through wifi or ethernet). You need first to know IP address of your pluto(on photo 192.168.1.29). Go to connection/new and type the URL. The parsing is very poor so, be very carefull with syntax, particularly "," which is used for parameter separator.</p>
 <ul style="margin-left:8em; margin-top:0em;">
@@ -93,6 +93,7 @@
 	<li>Mode (DVBS/DVBS2) : DVBS2</li>
 	<li>Constellation (QPSK,8PSK,16APSK): QPSK (only QPSK in valid in DVBS)</li>
 	<li>SymbolRate in KS (33-2000) : 333</li>
+	<li>Gain in dB (-71..0): 0</li>
 	<li>FEC (12,23,34,67,78...) : 23</li>
 	<li>CALLSIGN : f5oeo</li>
 </ul>
@@ -123,8 +124,13 @@
 	<li>Constellation (QPSK,8PSK,16APSK): QPSK (only QPSK in valid in DVBS)</li>
 	<li>SymbolRate in KS (33-2000) : 333</li>
 	<li>FEC (12,23,34,67,78...) : 23</li>
+	<li>Gain in dB (-71..0): 0</li>
 	<li>CALLSIGN : f5oeo</li>
 </ul>
+<p>You can copy/paste these fields</p>
+<p>rtmp://192.168.2.1:7272/,437,DVBS2,QPSK,333,23,0,</p>
+<p>,F5OEO,</p>
+
 <p id="test"><strong>OBS</strong></p>
 <p><img src="img/obspluto.png" alt="obs" /></p>
 <p id="test"><strong>VMIX</strong></p>
@@ -166,7 +172,7 @@
 <div id="versionsection" class="download">
 <p><strong>Status of the PlutoSDR firmware:</strong></p>
 <p><span id="versiontest">Need javascript to check (sorry)</span></p>
-<p><a id="plutsdr-fw-download" class="button" href="https://github.com/F5OEO/buildroot/releases/latest">Check the latest version</a>
+<p><a id="plutsdr-fw-download" class="button" href="http://www.vivadatv.org/viewtopic.php?f=87&t=685">Check the latest version</a>
 </div>
 <br>
 <a class="anchor" href="#top">Back to top</a>
@@ -319,7 +325,7 @@
 <a class="anchor" href="#top">Back to top</a>
 <h3>Help and Support</h3>
 <p id="test"><strong>Support</strong></p>
-<p>If you have any questions regarding this custom firmware or are experiencing any problems following the user guides, or experiments feel free to ask a question. Questions can be asked on our <a href="http://vivadatv.org/viewforum.php?f=87&sid=265a090b48bb7bace20b4dbbb2b9f034">vidatav forum</a>. </p>
+<p>If you have any questions regarding this custom firmware or are experiencing any problems following the user guides, or experiments feel free to ask a question. Questions can be asked on our <a href="http://vivadatv.org/viewforum.php?f=87&sid=265a090b48bb7bace20b4dbbb2b9f034">vivadatv forum</a>. </p>
 <p id="test"><strong>Support the author</strong></p>
 <p>Even most of this development is done under opensource (GPL), I should apreciate donation for integration, development and materials :  <a href="https://www.paypal.me/f5oeo">Donate</a></p>
 </section>
